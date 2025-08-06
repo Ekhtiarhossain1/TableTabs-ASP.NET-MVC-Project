@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Customer Login";
+}
+
+<h2>Customer Login</h2>
+
+<form method="post" action="/Customer/Login">
+    <label for="tableNumber">Select Table:</label>
+    <select id="tableNumber" name="tableNumber" required>
+        @for (int i = 1; i <= 10; i++)
+        {
+            <option value="@($"A{i}")">A @i</option>
+        }
+    </select>
+    <button type="submit">Login</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color: red;">@ViewBag.Error</p>
+}

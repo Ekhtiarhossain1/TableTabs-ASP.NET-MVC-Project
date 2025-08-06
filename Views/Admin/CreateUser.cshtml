@@ -1,0 +1,17 @@
+@model TableTabsApp.Models.User
+
+@{
+    ViewData["Title"] = "Create New User";
+}
+
+<h2>Create New User</h2>
+
+<form method="post" action="/Admin/CreateUser">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="Username" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="Password" required />
+
+    <button type="submit">Create</button>
+</form>

@@ -1,0 +1,27 @@
+@model IEnumerable<TableTabsApp.Models.Order>
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h2>My Orders</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.MenuItem.Name</td>
+                <td>@order.Quantity</td>
+                <td>@(order.IsReady ? "Ready" : "Not Ready")</td>
+            </tr>
+        }
+    </tbody>
+</table>

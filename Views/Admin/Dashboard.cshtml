@@ -1,0 +1,37 @@
+@model IEnumerable<TableTabsApp.Models.MenuItem>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2>Admin Dashboard</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>
+                    <a href="/Admin/EditMenuItem/@item.Id">Edit</a> |
+                    <a href="/Admin/DeleteMenuItem/@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Admin/AddMenuItem">Add New Menu Item</a><br />
+<a href="/Admin/OrderQueue">View Order Queue</a><br />
+<a href="/Admin/Logout">Logout</a><br />
+<a href="/Admin/CreateUser" class="btn btn-primary">Create New User</a>

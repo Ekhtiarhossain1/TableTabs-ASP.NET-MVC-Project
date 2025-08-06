@@ -1,0 +1,43 @@
+@model IEnumerable<TableTabsApp.Models.MenuItem>
+
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h2>Menu</h2>
+
+<a href="/Customer/MyOrders" class="btn btn-primary">View My Orders</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>
+                    <form method="post" action="/Customer/PlaceOrder">
+                        <input type="hidden" name="menuItemId" value="@item.Id" />
+                        <label for="quantity">Quantity:</label>
+                        <select name="quantity" style="padding: 5px; font-size: 14px;">
+                            @for (int i = 1; i <= 10; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                        <button type="submit">Order</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

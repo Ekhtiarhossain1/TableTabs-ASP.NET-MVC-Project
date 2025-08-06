@@ -1,0 +1,40 @@
+@model IEnumerable<TableTabsApp.Models.Order>
+
+@{
+    ViewData["Title"] = "Order Queue";
+}
+
+<h2>Order Queue</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Table</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.TableName</td>
+                <td>@order.MenuItem.Name</td>
+                <td>@order.Quantity</td>
+                <td>@(order.IsReady ? "Ready" : "Not Ready")</td>
+                <td>
+                    @if (order.IsReady)
+                    {
+                        <a href="/Admin/ServeOrder/@order.Id" class="btn btn-primary">Serve</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Waiting for Kitchen</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

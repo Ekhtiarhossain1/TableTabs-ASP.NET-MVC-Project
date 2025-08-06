@@ -1,0 +1,22 @@
+@model TableTabsApp.Models.MenuItem
+
+@{
+    ViewData["Title"] = "Edit Menu Item";
+}
+
+<h2>Edit Menu Item</h2>
+
+<form method="post" action="/Admin/EditMenuItem">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="Name" value="@Model.Name" required />
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="Description" required>@Model.Description</textarea>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="Price" value="@Model.Price" step="0.01" required />
+
+    <button type="submit">Save</button>
+</form>
