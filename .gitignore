@@ -1,0 +1,61 @@
+# .gitignore for ASP.NET Core / C# project
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet Packages
+*.nupkg
+# NuGet restore
+*.nuget
+# NuGet Packages folder
+packages/
+# Project lock files
+project.lock.json
+project.nuget.cache
+
+# Entity Framework Migrations
+Migrations/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Others
+*.dbmdl
+*.pdb
+*.cache
+*.zip
+*.vspscc
+*.vssscc
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+
+# IIS Express
+/.vs/
+/.vsconfig
+
+# Rider
+.idea/
+*.sln.iml
+
+# Web assets
+wwwroot/lib/
+
+# Ignore secrets
+secrets.json
