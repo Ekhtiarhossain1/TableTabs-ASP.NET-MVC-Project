@@ -6,7 +6,7 @@
 
 <h2>Edit Menu Item</h2>
 
-<form method="post" action="/Admin/EditMenuItem">
+<form method="post" enctype="multipart/form-data" action="/Admin/EditMenuItem">
     <input type="hidden" name="Id" value="@Model.Id" />
 
     <label for="name">Name:</label>
@@ -17,6 +17,16 @@
 
     <label for="price">Price:</label>
     <input type="number" id="price" name="Price" value="@Model.Price" step="0.01" required />
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image" accept="image/*" />
+
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <div>
+            <img src="@Model.ImagePath" alt="Current Image" style="max-width:100px;max-height:100px;" />
+        </div>
+    }
 
     <button type="submit">Save</button>
 </form>

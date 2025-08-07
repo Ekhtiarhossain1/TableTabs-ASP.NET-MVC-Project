@@ -9,6 +9,7 @@
 <table>
     <thead>
         <tr>
+            <th>Image</th>
             <th>Item</th>
             <th>Quantity</th>
             <th>Status</th>
@@ -18,6 +19,12 @@
         @foreach (var order in Model)
         {
             <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(order.MenuItem.ImagePath))
+                    {
+                        <img src="@order.MenuItem.ImagePath" alt="@order.MenuItem.Name" style="max-width:100px;max-height:100px;" />
+                    }
+                </td>
                 <td>@order.MenuItem.Name</td>
                 <td>@order.Quantity</td>
                 <td>@(order.IsReady ? "Ready" : "Not Ready")</td>

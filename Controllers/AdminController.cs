@@ -55,11 +55,22 @@ public class AdminController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddMenuItem(MenuItem menuItem)
+    public IActionResult AddMenuItem(MenuItem menuItem, IFormFile? image)
     {
         if (HttpContext.Session.GetString("Admin") == null)
         {
             return RedirectToAction("Login");
+        }
+
+        if (image != null && image.Length > 0)
+        {
+            var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                image.CopyTo(stream);
+            }
+            menuItem.ImagePath = "/images/" + fileName;
         }
 
         _context.MenuItems.Add(menuItem);
@@ -85,11 +96,22 @@ public class AdminController : Controller
     }
 
     [HttpPost]
-    public IActionResult EditMenuItem(MenuItem menuItem)
+    public IActionResult EditMenuItem(MenuItem menuItem, IFormFile? image)
     {
         if (HttpContext.Session.GetString("Admin") == null)
         {
             return RedirectToAction("Login");
+        }
+
+        if (image != null && image.Length > 0)
+        {
+            var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                image.CopyTo(stream);
+            }
+            menuItem.ImagePath = "/images/" + fileName;
         }
 
         _context.MenuItems.Update(menuItem);

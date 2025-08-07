@@ -9,6 +9,7 @@
 <table>
     <thead>
         <tr>
+            <th>Image</th>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
@@ -19,6 +20,12 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <img src="@item.ImagePath" alt="@item.Name" style="max-width:80px;max-height:80px;" />
+                    }
+                </td>
                 <td>@item.Name</td>
                 <td>@item.Description</td>
                 <td>@item.Price</td>
